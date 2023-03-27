@@ -1,24 +1,40 @@
-# README
+# Biblioteczka - warsztatowy poligon doświadczalny
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Aplikacja warsztatowa, nasz poligon doświadczalny, na którym będziecie mogli ćwiczyć prezentowaną praktyczną wiedzę.
 
-Things you may want to cover:
+Kilka słów o startowej apce:
+- aplikacja 'biblioteczna'
+- pozwala na rejestrację (logowanie, itd.) użytkowników
+- dodawanie książek
+- ...ich wypożyczanie <em>(in progress)</em>
+- ...oraz rezerwację książek już wypożyczonych <em>(in progress)</em>
+- w każdej chwili użytkownik może podejrzeć swoje wypożyczenia/rezerwacje <em>(in progress)</em>
 
-* Ruby version
+# Getting Started
 
-* System dependencies
+- Ruby 3.2.1
+- Rails 7.0.4.3
+- Baza danych - SQLite
+- Devise do obsługi użytkowników, sesji
+- dodatkowo wpięte:
+  - Letter opener (podgląd maili)
+  - Rspec (bazowe testy)
+  - FactoryBot (budowanie danych w testach)
+  - Faker (fake-owe dane)
+  - Rubocop (Twój strażnik czystego kodu)
 
-* Configuration
+# Instalacja, pierwsze odpalenie
 
-* Database creation
+- bundle install
+- rake db:setup
+- rails s
 
-* Database initialization
+# Check!
 
-* How to run the test suite
+- zarejestruj użytkownika
+- dodaj książkę
+- wypożycz ją <em>(in progress)</em>
+- zarejestruj drugiego użytkownika
+- zarezerwuj wypożyczoną książkę <em>(in progress)</em>
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Jeżeli wszystko przeszło bezboleśnie: jesteś gotowy do działania!
