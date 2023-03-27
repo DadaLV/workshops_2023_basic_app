@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @publisher %>
+
+<div>
+  <%= link_to "Edit this publisher", edit_publisher_path(@publisher) %> |
+  <%= link_to "Back to publishers", publishers_path %>
+
+  <%= button_to "Destroy this publisher", @publisher, method: :delete %>
+</div>

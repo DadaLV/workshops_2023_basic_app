@@ -1,0 +1,16 @@
+require:
+  - rubocop-gitlab-security
+  - rubocop-performance
+  - rubocop-rake
+  - rubocop-rspec
+  - rubocop-rails
+
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'config.ru'
+    - 'bin/**/*'
+
+Documentation:
+  Enabled: false
