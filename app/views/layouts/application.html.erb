@@ -7,24 +7,43 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "main", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <header class='main-header'>
-      <%= link_to root_path, class: 'brand' do %>
-        <i class="fa fa-book" aria-hidden="true"></i> Biblioteczka
-      <% end %>
-      <% if current_user %>
-        <div class="user-data">
-          <ul class="user-data__nav">
+    <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <%= link_to root_path, class: 'navbar-brand' do %>
+          <%= image_tag 'logo.png', alt: 'Web App Library logo', class: 'logo' %>
+        <% end %>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <%= link_to 'Books', books_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Add new book', new_book_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">My Reservations</a>
+            </li>
+            <% if current_user %>
+              <li class="nav-item">
+                <%= button_to("Log out #{current_user.email}", destroy_user_session_path, method: :delete, class: "nav-link btn btn-link") %>
+              </li>
+            <% end %>
           </ul>
-          <span class="user-data__user"><%= current_user.email %></span>
-          <%= button_to('log out', destroy_user_session_path, method: :delete, class: "btn btn--logout") %>
         </div>
-      <% end %>
-    </header>
-
-    <%= yield %>
+      </div>
+    </nav>
+      
+    <div class="container my-5">
+      <%= yield %>
+    </div>
   </body>
 </html>
