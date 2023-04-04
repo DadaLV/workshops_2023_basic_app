@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Warsztaty RoR - inFakt 2023</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "main", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <%= link_to root_path, class: 'navbar-brand' do %>
+          <%= image_tag 'logo.png', alt: 'Web App Library logo', class: 'logo' %>
+        <% end %>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <%= link_to 'Books', books_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Add new book', new_book_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">My Reservations</a>
+            </li>
+            <% if current_user %>
+              <li class="nav-item">
+                <%= button_to("Log out #{current_user.email}", destroy_user_session_path, method: :delete, class: "nav-link btn btn-link") %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+      
+    <div class="container my-5">
+      <%= yield %>
+    </div>
+  </body>
+</html>

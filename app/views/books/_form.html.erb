@@ -1,0 +1,72 @@
+<div class="container mt-5">
+  <%= form_with(model: book) do |form| %>
+    <% if book.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+        <ul>
+          <% book.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :isbn %>
+      <%= form.text_field :isbn, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :year %>
+      <%= form.number_field :year, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :page_count %>
+      <%= form.number_field :page_count, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :published_on %>
+      <%= form.date_field :published_on, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :language %>
+      <%= form.text_field :language, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :author_id %>
+      <%= form.text_field :author_id, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :category_id %>
+      <%= form.select(
+        :category_id,
+        options_for_select(Category.all.map { |c| [c.name, c.id] }, book.category_id),
+        {},
+        class: 'form-control') %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :publisher_id %>
+       <%= form.select(
+        :publisher_id,
+        options_for_select(Publisher.all.map { |c| [c.name, c.id] }, book.category_id),
+        {},
+        class: 'form-control') %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit 'Save', class: 'btn btn-reserve' %>
+    </div>
+  <% end %>
+</div>
