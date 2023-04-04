@@ -16,7 +16,7 @@
     year: Faker::Number.between(from: 1900, to: 2021),
     page_count: Faker::Number.between(from: 10, to: 1000),
     published_on: Faker::Date.between(from: 100.years.ago, to: Time.zone.today),
-    language: 'PLN',
+    language: 'PL',
     author_id: Author.all.sample.id,
     category_id: Category.all.sample.id,
     publisher_id: Publisher.all.sample.id
