@@ -5,6 +5,12 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+user1 = ::User.find_or_initialize_by(email: 'user1@test.pl')
+user1.update(password: '123User!', password_confirmation: '123User!')
+
+user2 = ::User.find_or_initialize_by(email: 'user2@test.pl')
+user2.update(password: '123User!', password_confirmation: '123User!')
+
 10.times { Category.create(name: Faker::Book.genre) }
 10.times { Publisher.create(name: Faker::Book.publisher) }
 10.times { Author.create(name: Faker::Book.author.split(' ').first, surname: Faker::Book.author.split(' ').last) }
@@ -22,3 +28,12 @@
     publisher_id: Publisher.all.sample.id
   )
 end
+
+user1.book_loans.find_or_initialize_by(book: Book.first).update(due_date: Time.zone.today + 2.weeks)
+user1.book_loans.find_or_initialize_by(book: Book.second).update(due_date: Time.zone.today + 1.week)
+
+user2.book_loans.find_or_initialize_by(book: Book.third).update(due_date: Time.zone.today + 2.weeks)
+user2.book_loans.find_or_initialize_by(book: Book.fourth).update(due_date: Time.zone.today + 1.week)
+
+user1.book_reservations.find_or_create_by(book: user2.book_loans.sample.book)
+user2.book_reservations.find_or_create_by(book: user1.book_loans.sample.book)

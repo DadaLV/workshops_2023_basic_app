@@ -1,16 +1,28 @@
 <div class="container">
-  <h1 class="text-center mb-5">Book List</h1>
+  <h1 class="text-center mb-5">Books</h1>
   <div class="row">
     <% @books.each do |book| %>
       <div class="col-md-6">
         <div class="book">
           <h2 class="book-title"><%= book.title %></h2>
-          <div class="book-details">by <%= book.author.name %> <%= book.author.surname %></div>
+          <div class="book-details">by <%= book.author.full_name %></div>
           <div class="book-details">Published in <%= book.year %></div>
           <div class="book-category">Category: <%= book.category.name %></div>
           <div class="book-btns">
             <%= link_to 'Details', book_path(book), class: "btn book-btn btn-details" %>
-            <%= link_to 'Reserve', '#', class: "btn book-btn btn-reserve" %>
+            <%= button_to(
+                "Reserve (book is already loaned)",
+                book_reservations_path(book_id: book.id),
+                method: :post,
+                class: "btn book-btn btn-reserve"
+              ) if book.reservation_available_for?(current_user) %>
+            
+            <%= button_to(
+                "Loan",
+                book_loans_path(book_id: book.id),
+                method: :post,
+                class: "btn book-btn btn-reserve"
+              ) if book.loan_available_for?(current_user) %>
           </div>
         </div>
       </div>
