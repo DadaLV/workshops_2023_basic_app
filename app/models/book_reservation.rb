@@ -9,4 +9,8 @@ class BookReservation < ApplicationRecord
   def reservation_not_available
     errors.add(:book, 'reservation is not available for you') unless book.reservation_available_for?(user)
   end
+
+  def by_user?(user)
+    self.user == user
+  end
 end

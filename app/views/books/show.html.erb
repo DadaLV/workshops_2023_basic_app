@@ -38,20 +38,8 @@
         <div class="book-info-value"><%= @book.publisher.name %></div>
       </div>
       <div class="book-info-row">
-        <%= button_to(
-          "Reserve (book is already loaned)",
-          book_reservations_path(book_id: @book.id),
-          method: :post,
-          class: "btn btn-primary btn-details"
-        ) if @book.reservation_available_for?(current_user) %>
-
-        <%= button_to(
-          "Loan",
-          book_loans_path(book_id: @book.id),
-          method: :post,
-          class: "btn btn-primary btn-details"
-        ) if @book.loan_available_for?(current_user) %>
-
+        <%= reserve_book_button(@book, css_class: 'btn-primary btn-details') %>
+        <%= loan_book_button(@book, css_class: 'btn-primary btn-details') %>
         <%= link_to "Edit", edit_book_path(@book), class: "btn btn-secondary btn-edit" %>
         <%= button_to "Delete", @book, method: :delete, class: "btn btn-outline-danger btn-sm" %>
       </div>

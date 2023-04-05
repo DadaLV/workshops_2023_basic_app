@@ -10,19 +10,8 @@
           <div class="book-category">Category: <%= book.category.name %></div>
           <div class="book-btns">
             <%= link_to 'Details', book_path(book), class: "btn book-btn btn-details" %>
-            <%= button_to(
-                "Reserve (book is already loaned)",
-                book_reservations_path(book_id: book.id),
-                method: :post,
-                class: "btn book-btn btn-reserve"
-              ) if book.reservation_available_for?(current_user) %>
-            
-            <%= button_to(
-                "Loan",
-                book_loans_path(book_id: book.id),
-                method: :post,
-                class: "btn book-btn btn-reserve"
-              ) if book.loan_available_for?(current_user) %>
+            <%= reserve_book_button(book, css_class: 'book-btn btn-reserve') %>
+            <%= loan_book_button(book, css_class: 'book-btn btn-reserve') %>
           </div>
         </div>
       </div>

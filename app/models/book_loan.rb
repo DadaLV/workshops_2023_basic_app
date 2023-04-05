@@ -11,4 +11,8 @@ class BookLoan < ApplicationRecord
   def loan_not_available
     errors.add(:book, 'loan is not available for you') unless book.loan_available_for?(user)
   end
+
+  def by_user?(user)
+    self.user == user
+  end
 end
