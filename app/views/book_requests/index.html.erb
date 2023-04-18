@@ -1,0 +1,42 @@
+ <div class="requests-container">
+  <div class="loans">
+    <h2>Loans</h2>
+    <ul class="list-group">
+      <% @book_loans.each do |book_loan| %>
+        <li class="list-group-item <%= 'cancelled' if book_loan.cancelled? %>">
+          <div class="book-info">
+            <h3 class="book-title"><%= link_to book_loan.book.title, book_path(book_loan.book) %></h3>
+            <p class="book-author">by <%= book_loan.book.author.full_name %></p>
+            <p class="book-author">Status: <%= book_loan.status %></p>
+          </div>
+          <%= button_to(
+                "Cancel",
+                cancel_book_loan_path(book_loan),
+                method: :post,
+                class: "btn btn-danger cancel-btn"
+              ) unless book_loan.cancelled? %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="reservations">
+    <h2>Reservations</h2>
+    <ul class="list-group">
+      <% @book_reservations.each do |book_reservation| %>
+        <li class="list-group-item <%= 'cancelled' if book_reservation.cancelled? %>">
+          <div class="book-info">
+            <h3 class="book-title"><%= link_to book_reservation.book.title, book_path(book_reservation.book) %></h3>
+            <p class="book-author">by <%= book_reservation.book.author.full_name %></p>
+            <p class="book-author">Status: <%= book_reservation.status %></p>
+          </div>
+          <%= button_to(
+                "Cancel",
+                cancel_book_reservation_path(book_reservation),
+                method: :post,
+                class: "btn btn-danger cancel-btn"
+              ) unless book_reservation.cancelled? %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

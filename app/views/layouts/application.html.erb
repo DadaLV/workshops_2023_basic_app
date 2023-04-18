@@ -30,7 +30,7 @@
               <%= link_to 'Add new book', new_book_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">My Reservations</a>
+              <%= link_to 'My Loans&Reservations', book_requests_path, class: 'nav-link' %>
             </li>
             <% if current_user %>
               <li class="nav-item">
@@ -43,6 +43,9 @@
     </nav>
       
     <div class="container my-5">
+      <% flash.each do |type, msg| %>
+        <%= tag.div msg, class: "alert alert-#{type == 'alert' ? 'danger' : 'success'}" %>
+      <% end %>
       <%= yield %>
     </div>
   </body>

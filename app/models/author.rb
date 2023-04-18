@@ -3,4 +3,8 @@ class Author < ApplicationRecord
   validates :surname, presence: true
 
   has_many :books, dependent: :destroy
+
+  def full_name
+    "#{name} #{surname}"
+  end
 end

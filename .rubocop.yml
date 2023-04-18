@@ -18,3 +18,9 @@ Documentation:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+RSpec/NestedGroups:
+  MaxNesting: 4
+
+Metrics/AbcSize:
+  CountRepeatedAttributes: false

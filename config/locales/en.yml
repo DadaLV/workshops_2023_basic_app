@@ -31,3 +31,14 @@
 
 en:
   hello: "Hello world"
+  controllers:
+    book_reservations:
+      cancel:
+        notice: 'Book reservation was successfully cancelled'
+      create:
+        notice: 'Book reservation was successfully created'
+    book_loans:
+      create:
+        notice: 'Book Loan was successfully created.'
+      cancel:
+        notice: 'Book loan was successfully cancelled.'
