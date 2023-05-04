@@ -5,10 +5,10 @@ Aplikacja warsztatowa, nasz poligon doświadczalny, na którym będziecie mogli 
 Kilka słów o startowej apce:
 - aplikacja 'biblioteczna'
 - pozwala na rejestrację (logowanie, itd.) użytkowników
-- dodawanie książek
-- ...ich wypożyczanie <em>(in progress)</em>
-- ...oraz rezerwację książek już wypożyczonych <em>(in progress)</em>
-- w każdej chwili użytkownik może podejrzeć swoje wypożyczenia/rezerwacje <em>(in progress)</em>
+- dodawanie książek, podgląd, usuwanie
+- ...ich wypożyczanie
+- ...oraz rezerwację książek już wypożyczonych
+- w każdej chwili użytkownik może podejrzeć swoje wypożyczenia/rezerwacje
 
 # Getting Started
 
@@ -28,13 +28,14 @@ Kilka słów o startowej apce:
 - bundle install
 - rake db:setup
 - rails s
+- możesz też odpalić testy: `rspec` (powinny przejść) lub `rubocop` (powinien być zadowolony :) - no offenses detected)
 
 # Check!
 
 - zarejestruj użytkownika
 - dodaj książkę
-- wypożycz ją <em>(in progress)</em>
+- wypożycz ją
 - zarejestruj drugiego użytkownika
-- zarezerwuj wypożyczoną książkę <em>(in progress)</em>
+- zarezerwuj wypożyczoną książkę
 
 Jeżeli wszystko przeszło bezboleśnie: jesteś gotowy do działania!
