@@ -22,6 +22,9 @@
 !/tmp/pids/
 !/tmp/pids/.keep
 
+# Ignore directories
+.idea/
+
 # Ignore uploaded files in development.
 /storage/*
 !/storage/.keep

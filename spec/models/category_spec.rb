@@ -13,7 +13,7 @@ RSpec.describe Category do
     context 'when name is empty' do
       let(:name) { nil }
 
-      specify { expect(category).to be_invalid }
+      specify { expect(category).not_to be_valid }
     end
   end
 

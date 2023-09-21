@@ -6,8 +6,9 @@ FactoryBot.define do
     page_count { Faker::Number.between(from: 10, to: 1000) }
     published_on { Faker::Date.between(from: 100.years.ago, to: Time.zone.today) }
     language { 'PL' }
-    author { build(:author) }
-    category { build(:category) }
-    publisher { build(:publisher) }
+
+    author factory: %i[author]
+    category factory: %i[category]
+    publisher factory: %i[publisher]
   end
 end
