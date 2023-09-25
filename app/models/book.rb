@@ -27,7 +27,7 @@ class Book < ApplicationRecord
   def status_for(user)
     return 'available' if available?
 
-    [loan_status(user), reservation_status(user)].reject(&:blank?).join('; ')
+    [loan_status(user), reservation_status(user)].compact_blank.join('; ')
   end
 
   private
