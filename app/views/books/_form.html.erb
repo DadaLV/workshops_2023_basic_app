@@ -44,7 +44,11 @@
 
     <div class="form-group">
       <%= form.label :author_id %>
-      <%= form.text_field :author_id, class: 'form-control' %>
+      <%= form.select(
+        :author_id,
+        options_for_select(Author.all.map { |a| [a.full_name, a.id] }, book.author_id),
+        {},
+        class: 'form-control') %>
     </div>
 
     <div class="form-group">
