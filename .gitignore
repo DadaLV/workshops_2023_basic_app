@@ -36,3 +36,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+/config/a9n.yml
+/config/configuration.yml
