@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_18_235405) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_08_223727) do
   create_table "authors", force: :cascade do |t|
     t.string "name"
     t.string "surname"
@@ -25,6 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_18_235405) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "event_id"
     t.index ["book_id"], name: "index_book_loans_on_book_id"
     t.index ["user_id"], name: "index_book_loans_on_user_id"
   end

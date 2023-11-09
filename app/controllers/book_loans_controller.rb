@@ -18,6 +18,8 @@ class BookLoansController < ApplicationController
   def cancel
     respond_to do |format|
       if @book_loan.cancelled!
+        event_id = @book_loan.event_id
+        delete_calendar_event(event_id) if event_id.present?
         format.html { redirect_to book_requests_path, notice: flash_notice }
         format.json { render :show, status: :ok, location: book }
       end
@@ -41,6 +43,13 @@ class BookLoansController < ApplicationController
   end
 
   def notice_calendar
-    UserCalendarNotifier.new(current_user, book).insert_event
+    event = UserCalendarNotifier.new(current_user, book).insert_event
+    event_id = event.id
+
+    @book_loan.update(event_id:)
+  end
+
+  def delete_calendar_event(event_id)
+    UserCalendarNotifier.new(current_user, @book_loan.book).delete_event(event_id)
   end
 end
