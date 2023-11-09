@@ -37,6 +37,7 @@ end
 
 group :development do
   gem 'letter_opener'
+  gem 'letter_opener_web', '~> 2.0'
   gem 'web-console'
 end
 
@@ -50,3 +51,5 @@ gem 'a9n'
 gem 'google-api-client', require: 'google/apis/calendar_v3'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
+gem "sidekiq", "~> 7.1"
+gem "sidekiq-cron", "~> 1.11"

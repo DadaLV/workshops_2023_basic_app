@@ -5,6 +5,9 @@ class BookLoansController < ApplicationController
   def create
     respond_to do |format|
       if @book_loan.save
+        book_loan_id = @book_loan.id
+        LoanCreatedJob.perform_async(book_loan_id)
+        DueDateNotificationJob.perform_at(@book_loan.due_date - 1.day, book_loan_id)
         format.html { redirect_to book_url(book), notice: flash_notice }
         format.json { render :show, status: :created, location: @book_loan }
         notice_calendar

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+<body>
+  <h1>Book Loan Reminder</h1>
+  
+  <p>Hello <%= @user %>,</p>
+  
+  <p>The due date for returning the book "<%= @title %>" to the library is <%= @date.strftime('%B %d, %Y') %>.</p>
+  
+  <p>Thank you for using our library services!</p>
+  
+  <p>Best regards,</p>
+  <p>Your Library Team (CRON)</p>
+</body>
+</html>
