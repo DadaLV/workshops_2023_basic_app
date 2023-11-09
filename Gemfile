@@ -5,6 +5,7 @@ ruby '3.1.2'
 
 gem 'bootsnap', require: false
 gem 'bootstrap'
+gem "bunny", ">= 2.19.0"
 gem 'devise'
 gem 'importmap-rails'
 gem 'jbuilder'
