@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-</head>
-<body>
-  <h1>Book Loan Confirmation</h1>
-  
-  <p>Hello <%= @user %>,</p>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Book Loan Confirmation</h1>
+    
+    <p>Hello <%= @user %>,</p>
 
-  <p>You have successfully loaned the book "<%= @title %>" from our library.</p>
-  
-  <p>The due date for returning the book is <%= @date.strftime('%B %d, %Y') %>.</p>
-  
-  <p>Thank you for using our library services. Enjoy your reading!</p>
-  
-  <p>Best regards,</p>
-  <p>Your Library Team</p>
-</body>
+    <p>You have successfully loaned the book "<%= @title %>" from our library.</p>
+    
+    <p>The due date for returning the book is <%= @date.strftime('%B %d, %Y') %>.</p>
+    
+    <p>Thank you for using our library services. Enjoy your reading!</p>
+    
+    <p>Best regards,</p>
+    <p>Your Library Team</p>
+  </body>
 </html>
