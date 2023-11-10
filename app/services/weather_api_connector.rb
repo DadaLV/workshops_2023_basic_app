@@ -8,6 +8,5 @@ class WeatherApiConnector
     uri = URI(url)
     response = Net::HTTP.get(uri)
     JSON.parse(response)
-  end
-  
+  end  
 end

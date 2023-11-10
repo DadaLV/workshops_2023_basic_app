@@ -5,6 +5,7 @@ class WeatherPresenter
 
   def nice_weather?
     description = data["current"]["condition"]["text"]
+
     description == 'Sunny' || description == 'Partly cloudy'
   end
 
