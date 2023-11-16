@@ -1,3 +1,11 @@
 <div class="container">
-  <p>Today's weather in <%= weather_presenter.location %> is: <%= weather_presenter.temperature %> °C, <%= weather_presenter.condition %> <a href="<%= weather_presenter.icon %>"> <img src="<%= weather_presenter.icon %>" alt="Weather Icon"></a> <%= weather_presenter.encourage_text %></p>  
+  <p>
+    Today's weather in <%= weather_presenter.location %> is:
+    <%= weather_presenter.temperature %> °C,
+    <%= weather_presenter.condition %>
+    <a href="<%= weather_presenter.icon %>">
+      <img src="<%= weather_presenter.icon %>" alt="Weather Icon">
+    </a>
+    <%= weather_presenter.encourage_text %>
+  </p>
 </div>
