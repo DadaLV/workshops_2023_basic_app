@@ -3,15 +3,24 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.2'
 
+gem 'a9n'
 gem 'bootsnap', require: false
 gem 'bootstrap'
+gem "bunny", ">= 2.19.0"
 gem 'devise'
+gem 'google-api-client', require: 'google/apis/calendar_v3'
+gem 'hotwire-rails'
 gem 'importmap-rails'
 gem 'jbuilder'
+gem 'kaminari'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 gem 'puma', '~> 6.4'
 gem 'rails', '~> 7.0.8'
 gem 'redis', '< 6.0'
 gem 'sassc-rails'
+gem "sidekiq", "~> 7.1"
+gem "sidekiq-cron", "~> 1.11"
 gem 'sprockets-rails'
 gem 'sqlite3', '~> 1.6.6'
 gem 'stimulus-rails'
@@ -46,10 +55,3 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
-
-gem 'a9n'
-gem 'google-api-client', require: 'google/apis/calendar_v3'
-gem 'omniauth-google-oauth2'
-gem 'omniauth-rails_csrf_protection'
-gem "sidekiq", "~> 7.1"
-gem "sidekiq-cron", "~> 1.11"
