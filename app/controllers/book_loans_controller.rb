@@ -5,8 +5,13 @@ class BookLoansController < ApplicationController
   def create
     respond_to do |format|
       if @book_loan.save
+        book_loan_id = @book_loan.id
+        LoanCreatedJob.perform_async(book_loan_id)
+        DueDateNotificationJob.perform_at(@book_loan.due_date - 1.day, book_loan_id)
+        publish_log(@book_loan)
         format.html { redirect_to book_url(book), notice: flash_notice }
         format.json { render :show, status: :created, location: @book_loan }
+        notice_calendar
       else
         format.html { redirect_to book_url(book), alert: @book_loan.errors.full_messages.join(', ') }
         format.json { render json: @book_loan.errors, status: :unprocessable_entity }
@@ -17,6 +22,9 @@ class BookLoansController < ApplicationController
   def cancel
     respond_to do |format|
       if @book_loan.cancelled!
+        event_id = @book_loan.event_id
+        delete_calendar_event(event_id) if event_id.present?
+        publish_loan_log(@book_loan)
         format.html { redirect_to book_requests_path, notice: flash_notice }
         format.json { render :show, status: :ok, location: book }
       end
@@ -37,5 +45,24 @@ class BookLoansController < ApplicationController
 
   def book_loan_params
     params.require(:book_id)
+  end
+
+  def notice_calendar
+    event = UserCalendarNotifier.new(current_user, book).insert_event
+    event_id = event.id
+
+    @book_loan.update(event_id:)
+  end
+
+  def delete_calendar_event(event_id)
+    UserCalendarNotifier.new(current_user, @book_loan.book).delete_event(event_id)
+  end
+
+  def publish_log(book_loan)
+    Publishers::LoanBookPublisher.new(book_loan.attributes).publish
+  end
+
+  def publish_loan_log(book_loan)
+    Publishers::LoanBookPublisher.new(book_loan.attributes).publish_log
   end
 end
