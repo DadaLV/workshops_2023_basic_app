@@ -1,0 +1,3 @@
+due_date_notification:
+  cron: '0 8 * * *' 
+  class: 'DueDateNotificationCronJob'
